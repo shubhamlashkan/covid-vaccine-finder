@@ -10,25 +10,23 @@ import { RootObjectStates, State } from './models/statesModel';
 })
 export class HomeComponent implements OnInit {
 
+  //Based on value UI will be displayed
   searchByPin:boolean;
   searchByDistrict:boolean;
   showSearchedRecordsByDistrict:boolean;
   showSearchedRecordsByPincode:boolean;
 
 
-
+  //object for storing result of API
   allStates: RootObjectStates;
   myStateArray: State[]=[];
   allDistricts : RootObjectDistrict;
   myDistrictsArray : District[]=[];
-
-
-
   allSessions:RootObjectSession;
   mySessionArray: Session[]=[];
 
 
-
+  //Storing count of district , state and session for looping
   districtCount : number
   stateCount:number;
   sessionCount:number;
@@ -37,13 +35,18 @@ export class HomeComponent implements OnInit {
 
   state_id:number;
   district_id:number;
+
+  //used to store pincode for API
   pincode:number;
 
+  //Varibles for finding today Date
   today:Date;
   date:number;
   month:number;
   year:number;
   finalDate:string;
+
+
   vaccine = ["COVAXIN","COVISHIELD","SPUTNIK V"]
   ageGroup = [18,45];
   vaccineType:string;
@@ -71,19 +74,21 @@ export class HomeComponent implements OnInit {
     this.getStates();
   }
 
+  //Show Search By District Input Form
   showFindByDistrictForm()
   {
     this.searchByDistrict = true;
     this.searchByPin = false;
   }
 
+   //Show Search By Pincode Input Form
   showFindByPinForm()
   {
     this.searchByPin = true;
     this.searchByDistrict = false;
   }
 
-
+  //Get States from API
   getStates():void
   {
     this.vaccineService.getStates()
@@ -96,7 +101,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-
+  //On Selecting State Find Districts
   onSelectState(event:any)
   {
     this.state_id = event.target.value;
@@ -112,6 +117,7 @@ export class HomeComponent implements OnInit {
   }
 
 
+  //On Selecting District Find Vaccine Slots
   onSelectDistrictFindSlot(event:any)
   {
       this.district_id = event.target.value;
@@ -133,17 +139,21 @@ export class HomeComponent implements OnInit {
         });
   }
 
+  //For filtering output based on vacccine selected
   onVaccineSelected(event:any)
   {
     this.vaccineType = event.target.value;
   }
 
+  //For filtering output based on Age Group Selected
   onAgeGroupSelected(event:any)
   {
     this.ageLimit = event.target.value;
-    console.log(this.ageLimit);
+    //console.log(this.ageLimit);
   }
 
+
+  //Find Slot By Pincode
   findByPincode(event:any)
   {
       this.pincode = event.target.value;

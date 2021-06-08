@@ -65,17 +65,17 @@ export class VaccineService {
     return this.http.get<RootObjectSession>(this.URL_FINDBYDISTRICT_FINAL + "?district_id=" + district_id + "&date=" + date, {observe:'response'});
   }
 
-  //Vaccination Slot for week by pincode
-  getSlotForWeekByPin(pincode:number,date:Date):Observable<HttpResponse<RootObjectWeekSlot[]>>
-  {
-    return this.http.get<RootObjectWeekSlot[]>(`${this.baseURl}/V2/appointment/sessions/public/calendarByPin/${pincode}/${date}`, {observe:'response'});
-  }
+  // //Vaccination Slot for week by pincode
+  // getSlotForWeekByPin(pincode:number,date:Date):Observable<HttpResponse<RootObjectWeekSlot[]>>
+  // {
+  //   return this.http.get<RootObjectWeekSlot[]>(`${this.baseURl}/V2/appointment/sessions/public/calendarByPin/${pincode}/${date}`, {observe:'response'});
+  // }
 
-  //Vaccination slor for week by district
-  getSlotForWeekByDistrict(district_id:number,date:Date):Observable<HttpResponse<RootObjectWeekSlot[]>>
-  {
-    return this.http.get<RootObjectWeekSlot[]>(`${this.baseURl}/V2/appointment/sessions/public/calendarByDistrict/${district_id}/${date}`, {observe:'response'});
-  }
+  // //Vaccination slor for week by district
+  // getSlotForWeekByDistrict(district_id:number,date:Date):Observable<HttpResponse<RootObjectWeekSlot[]>>
+  // {
+  //   return this.http.get<RootObjectWeekSlot[]>(`${this.baseURl}/V2/appointment/sessions/public/calendarByDistrict/${district_id}/${date}`, {observe:'response'});
+  // }
 
 
 
