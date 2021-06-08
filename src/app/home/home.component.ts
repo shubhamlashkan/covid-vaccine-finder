@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
   allSessions:RootObjectSession;
   mySessionArray: Session[]=[];
 
+  allSessions2:RootObjectSession;
+  mySessionArray2: Session[]=[];
 
   //Storing count of district , state and session for looping
   districtCount : number
@@ -104,6 +106,7 @@ export class HomeComponent implements OnInit {
   //On Selecting State Find Districts
   onSelectState(event:any)
   {
+    this.mySessionArray=[];
     this.state_id = event.target.value;
     this.vaccineService.getDistricts(this.state_id)
       .subscribe(response => {this.allDistricts = response.body
@@ -120,8 +123,8 @@ export class HomeComponent implements OnInit {
   //On Selecting District Find Vaccine Slots
   onSelectDistrictFindSlot(event:any)
   {
+    this.mySessionArray=[];
       this.district_id = event.target.value;
-
       this.vaccineService.getSessionByDistrict(this.district_id,this.finalDate)
         .subscribe(response=> {
           this.allSessions = response.body
@@ -135,7 +138,7 @@ export class HomeComponent implements OnInit {
             this.showSearchedRecordsByDistrict = true;
             this.showSearchedRecordsByPincode = false;
           }
-          console.log(this.mySessionArray);
+          //console.log(this.mySessionArray);
         });
   }
 
@@ -163,18 +166,18 @@ export class HomeComponent implements OnInit {
         this.pincode = event.target.value;
         this.vaccineService.getSessionByPin(this.pincode,this.finalDate)
         .subscribe(response=> {
-          this.allSessions = response.body
-          this.sessionCount = this.allSessions.sessions.length;
+          this.allSessions2 = response.body
+          this.sessionCount = this.allSessions2.sessions.length;
           for(var i=0;i<this.sessionCount;i++)
           {
-            this.mySessionArray[i] = this.allSessions.sessions[i];
+            this.mySessionArray2[i] = this.allSessions2.sessions[i];
           }
           if(this.sessionCount>0)
           {
             this.showSearchedRecordsByDistrict = false;
             this.showSearchedRecordsByPincode = true;
           }
-          console.log(this.mySessionArray);
+          //console.log(this.mySessionArray2);
         });
       }
   }
