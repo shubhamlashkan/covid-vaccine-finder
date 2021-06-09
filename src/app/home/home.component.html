@@ -3,7 +3,9 @@
 <div class="top-margin">
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-3 col-md-3">
+
+    </div>
     <div class="col-lg-6 col-md-6">
       <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" (click)="showFindByDistrictForm()" class="btn btn-outline-light btn-lg">Find Slot By District</button>
@@ -11,12 +13,33 @@
       <button type="button" (click)="showFindByPinForm()" class="btn btn-outline-light btn-lg">Find Slot By Pin</button>
     </div>
     </div>
-    <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-3 col-md-3">
+
+    </div>
 
   </div>
 </div>
 </div>
+  <br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
 
+    </div>
+    <div class="col-lg-6 col-md-6">
+      <p style="color: white; font-size: 1.1rem;">
+        By Default checking availability of Covaxin for 18-45 Age Group
+      </p>
+      <p style="color: white; font-size: 1.1rem;">
+          You can change value of Vaccine Type and Age from drop down
+      </p>
+    </div>
+    <div class="col-lg-3 col-md-3">
+
+    </div>
+  </div>
+
+</div>
 
 <!-- Form input for search by District -->
 <div *ngIf="searchByDistrict">
@@ -144,6 +167,7 @@
           <th scope="col">Earliest Date</th>
           <th scope="col">Available Dose</th>
           <th scope="col">Time Slots</th>
+          <th scope="col">Age</th>
           <th scope="col">Vaccine</th>
         </tr>
       </thead>
@@ -157,6 +181,7 @@
           <td>{{session.address}} {{session.pincode}}</td>
           <td>{{session.date}}</td>
           <td>{{session.available_capacity}}</td>
+          <td>{{session.slots}}</td>
           <td>{{session.min_age_limit}}</td>
           <td >
             <tr>{{session.vaccine}}</tr>
@@ -186,6 +211,7 @@
             <th scope="col">Earliest Date</th>
             <th scope="col">Available Dose</th>
             <th scope="col">Time Slots</th>
+            <th scope="col">Age</th>
             <th scope="col">Vaccine</th>
           </tr>
         </thead>
@@ -199,6 +225,7 @@
             <td>{{session.address}} {{session.pincode}}</td>
             <td>{{session.date}}</td>
             <td>{{session.available_capacity}}</td>
+            <td>{{session.slots}}</td>
             <td>{{session.min_age_limit}}</td>
             <td >
               <tr>{{session.vaccine}}</tr>

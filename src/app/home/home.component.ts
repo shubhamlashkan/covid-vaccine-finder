@@ -114,7 +114,6 @@ export class HomeComponent implements OnInit {
       for(var i=0;i<this.districtCount;i++)
       {
           this.myDistrictsArray[i] = this.allDistricts.districts[i];
-
       }
       });
   }
@@ -123,7 +122,9 @@ export class HomeComponent implements OnInit {
   //On Selecting District Find Vaccine Slots
   onSelectDistrictFindSlot(event:any)
   {
+    this.pincode = null;
     this.mySessionArray=[];
+    this.mySessionArray2=[];
       this.district_id = event.target.value;
       this.vaccineService.getSessionByDistrict(this.district_id,this.finalDate)
         .subscribe(response=> {
@@ -159,6 +160,7 @@ export class HomeComponent implements OnInit {
   //Find Slot By Pincode
   findByPincode(event:any)
   {
+      this.mySessionArray2=[];
       this.pincode = event.target.value;
       //console.log(this.pincode)
       if(this.pincode.toString().length==6)
